@@ -6,19 +6,19 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4  # 更新到最新版本
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5  # 更新到最新版本
       with:
-        python-version: '3.9'
+        python-version: '3.10'  # 推荐使用较新版本
     - name: Install dependencies
       run: |
         pip install pyinstaller
     - name: Build Application
       run: |
-        pyinstaller --windowed --name "VIP追剧神器" VIPVideoApp.py
+        pyinstaller --windowed --name "VIPVideo" VIPVideoApp.py  # 建议使用英文名避免路径问题
     - name: Upload Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4  # 使用最新版本
       with:
         name: macOS-App
-        path: dist/VIP追剧神器.app
+        path: dist/VIPVideo.app  # 路径必须与构建名称一致
